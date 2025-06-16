@@ -38,13 +38,13 @@ class RolesServiceProvider extends ServiceProvider
         }
 
         if (config('roles.rolesGuiEnabled')) {
-            $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+            $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
         }
         if (config('roles.rolesApiEnabled')) {
-            $this->loadRoutesFrom(__DIR__.'/routes/api.php');
+            $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
         }
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang/', $this->_packageTag);
-        $this->registerBladeExtensions();
+        $this->loadTranslationsFrom(__DIR__ . '/resources/lang/', $this->_packageTag);
+        //$this->registerBladeExtensions();
     }
 
     /**
@@ -54,10 +54,10 @@ class RolesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/roles.php', 'roles');
+        $this->mergeConfigFrom(__DIR__ . '/config/roles.php', 'roles');
         $this->loadMigrations();
         if (config('roles.rolesGuiEnabled')) {
-            $this->loadViewsFrom(__DIR__.'/resources/views/', $this->_packageTag);
+            $this->loadViewsFrom(__DIR__ . '/resources/views/', $this->_packageTag);
         }
         $this->publishFiles();
         $this->loadSeedsFrom();
@@ -66,7 +66,7 @@ class RolesServiceProvider extends ServiceProvider
     private function loadMigrations()
     {
         if (config('roles.defaultMigrations.enabled')) {
-            $this->loadMigrationsFrom(__DIR__.'/Database/Migrations');
+            $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
         }
     }
 
@@ -114,30 +114,30 @@ class RolesServiceProvider extends ServiceProvider
         $publishTag = $this->_packageTag;
 
         $this->publishes([
-            __DIR__.'/config/roles.php' => config_path('roles.php'),
-        ], $publishTag.'-config');
+            __DIR__ . '/config/roles.php' => config_path('roles.php'),
+        ], $publishTag . '-config');
 
         $this->publishes([
-            __DIR__.'/Database/Migrations' => database_path('migrations'),
-        ], $publishTag.'-migrations');
+            __DIR__ . '/Database/Migrations' => database_path('migrations'),
+        ], $publishTag . '-migrations');
 
         $this->publishes([
-            __DIR__.'/Database/Seeders/publish' => database_path('seeders'),
-        ], $publishTag.'-seeds');
+            __DIR__ . '/Database/Seeders/publish' => database_path('seeders'),
+        ], $publishTag . '-seeds');
 
         $this->publishes([
-            __DIR__.'/config/roles.php'         => config_path('roles.php'),
-            __DIR__.'/Database/Migrations'      => database_path('migrations'),
-            __DIR__.'/Database/Seeders/publish' => database_path('seeders'),
+            __DIR__ . '/config/roles.php' => config_path('roles.php'),
+            __DIR__ . '/Database/Migrations' => database_path('migrations'),
+            __DIR__ . '/Database/Seeders/publish' => database_path('seeders'),
         ], $publishTag);
 
         $this->publishes([
-            __DIR__.'/resources/views' => base_path('resources/views/vendor/'.$publishTag),
-        ], $publishTag.'-views');
+            __DIR__ . '/resources/views' => base_path('resources/views/vendor/' . $publishTag),
+        ], $publishTag . '-views');
 
         $this->publishes([
-            __DIR__.'/resources/lang' => base_path('resources/lang/vendor/'.$publishTag),
-        ], $publishTag.'-lang');
+            __DIR__ . '/resources/lang' => base_path('resources/lang/vendor/' . $publishTag),
+        ], $publishTag . '-lang');
     }
 
     /**
