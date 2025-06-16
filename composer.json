@@ -50,7 +50,10 @@
             "providers": [
                 "jeremykenedy\\LaravelRoles\\RolesServiceProvider"
             ]
-        }
+        },
+        "branch-alias": {
+        "dev-Fixer": "12.18.0"
+      }
     },
     "config": {
         "sort-packages": true
